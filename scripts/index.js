@@ -1,8 +1,9 @@
 let shuffledQuestions = shuffle(questions)
 let score = 0
-let stats = {}
 let total = 0
 let currentIndex = 0
+
+let stats = {}
 
 let options = {
   "indent_size": "4",
@@ -92,45 +93,53 @@ function evaluateAnswer(questionObj){
   let correct = false
   questionObj.answers.forEach((answer, index) => {
     let prettyAnswer = prettify(answer)
-    console.log(prettyAnswer)
     if(prettyAnswer === theirPrettyAnswer){
       correct = true
       theyGotItRight(questionObj, theirPrettyAnswer, prettyAnswer, index)
     }
   })
   if(!correct){
-    console.warn(theirPrettyAnswer)
     theyGotItWrong(questionObj, theirPrettyAnswer)
   }
 }
 
 function theyGotItRight(questionObj, theirPrettyAnswer, prettyAnswer, index){
-  console.log("Correct")
   score = score + 1
   total = total + 1
   document.querySelector("#score").innerText = `${score}/${total}`
   let explanation = document.querySelector("#answer-explanation")
-  explanation.classList.add("right")
-  explanation.innerHTML = `
-    <h5>You got it right</h5>
-    <p>You wrote:</p>
-    <textarea id="their-answer" class="explanation"></textarea>
-  `
-  explanation.querySelector("#their-answer").value = theirPrettyAnswer
+  if(index === 0){
+    explanation.innerHTML = `
+      <h5>You got it right</h5>
+      <p>You wrote:</p>
+      <textarea id="their-answer" class="explanation true-answer"></textarea>
+    `
+    explanation.querySelector("#their-answer").value = theirPrettyAnswer
+  }else{
+    explanation.innerHTML = `
+      <h5>You got it right</h5>
+      <p>You wrote:</p>
+      <textarea id="their-answer" class="explanation true-answer"></textarea>
+      <p>But an even better way to write it is:</p>
+      <textarea id="true-answer" class="explanation true-answer "></textarea>
+    `
+    explanation.querySelector("#their-answer").value = theirPrettyAnswer
+    explanation.querySelector("#their-answer").classList.remove("true-answer")
+    explanation.querySelector("#their-answer").classList.add("good-enough")
+    explanation.querySelector("#true-answer").value = prettify(questionObj.answers[0])
+  }
 }
 
 function theyGotItWrong(questionObj, theirPrettyAnswer){
-  console.log("incorrect")
   total = total + 1
   document.querySelector("#score").innerText = `${score}/${total}`
   let explanation = document.querySelector("#answer-explanation")
-  explanation.classList.add("wrong")
   explanation.innerHTML = `
     <h5>You got it wrong</h5>
     <p>You wrote:</p>
-    <textarea id="their-answer" class="explanation"></textarea>
+    <textarea id="their-answer" class="explanation wrong"></textarea>
     <p>The correct answer is:</p>
-    <textarea id="true-answer" class="explanation"></textarea>
+    <textarea id="true-answer" class="explanation true-answer"></textarea>
   `
   explanation.querySelector("#their-answer").value = theirPrettyAnswer
   explanation.querySelector("#true-answer").value = prettify(questionObj.answers[0])
@@ -143,8 +152,6 @@ function askNextQuesion(){
     document.querySelector("textarea").value = ""
     let explanation = document.querySelector("#answer-explanation")
     explanation.innerHTML = ""
-    explanation.classList.remove("right")
-    explanation.classList.remove("wrong")
   }else{
     alert("All done. You can refresh the page to get the same questions again.")
     document.getElementById("next-button").disabled = false

@@ -19,6 +19,17 @@ textarea#answer {
   font-family: "Courier New", Courier, monospace!important;
 }
 
+.true-answer{
+  border: solid 1px green;
+}
+
+.wrong{
+  border: solid 1px red;
+}
+
+.good-enough{
+  border: solid 1px orange;
+}
 
 textarea.explanation {
   width: 100%;
