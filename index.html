@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel = "stylesheet" href = "styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.10.2/beautify.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript" src="scripts/questions.js"></script>
+    <script type="text/javascript" src="scripts/helperFunctions.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="scripts/beautifier.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <div class="ui segment container" id="container">
+
+      <p  id="question-title"></p>
+
+      <div id="question-box">
+        <p id="question-text"></p>
+        <div id="function-box">
+          <p id="function-text"></p>
+        </div>
+        <div class="ui segment" id="answer-box">
+          <p id="before-text"></p>
+          <textarea id="answer"></textarea>
+        </div>
+        <div id="button-container">
+
+        </div>
+        <h6>Score: <span id="score">0/0</span></h6>
+      </div>
+
+      <div class="ui segment " id="answer-explanation">
+      </div>
+    </div>
+  </body>
+</html>
