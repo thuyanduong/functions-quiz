@@ -1,7 +1,7 @@
 
-let FUNC_EXPRESSION = 'functionExpression'
-let FUNC_DECLARATION = 'functionDeclaration'
-let ARROW_FUNC = 'arrowFunction'
+let FUNC_EXPRESSION = 'Function Expressions'
+let FUNC_DECLARATION = 'Function Declarations'
+let ARROW_FUNC = 'Arrow Functions'
 
 let questions = [
   {
@@ -13,7 +13,6 @@ let questions = [
       }
     `,
     beforeText: `const multipleByTwo =`,
-    placeholder: ``,
     answers: [`
       function (num){
         return num * 2
@@ -31,7 +30,6 @@ let questions = [
       }
     `,
     beforeText: `const addSeven =`,
-    placeholder: ``,
     answers: [
       'x => x + 7',
       '(x) => x + 7',
@@ -48,30 +46,11 @@ let questions = [
         alert("Hello, " + name)
       }
     `,
-    placeholder: ``,
     answers: [
       `function greet(name){
             alert("Hello, " + name)
         }`
     ],
-    answerType: ARROW_FUNC
+    answerType: FUNC_DECLARATION
   }
 ]
-
-/*
-{
-  id: ,
-  question: `
-
-  `,
-  func: `
-
-  `,
-  answerType:
-
-  ,
-  answers: [
-
-  ]
-}
-*/

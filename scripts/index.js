@@ -3,7 +3,20 @@ let score = 0
 let total = 0
 let currentIndex = 0
 
-let stats = {}
+let stats = {
+  [FUNC_DECLARATION]: {
+    score: 0,
+    total: 0
+  },
+  [FUNC_EXPRESSION]: {
+    score: 0,
+    total: 0
+  },
+  [ARROW_FUNC]: {
+    score: 0,
+    total: 0
+  }
+}
 
 let options = {
   "indent_size": "4",
@@ -88,6 +101,8 @@ function answerQuestion(questionObj){
 }
 
 function evaluateAnswer(questionObj){
+  total = total + 1
+  stats[questionObj.answerType].total = stats[questionObj.answerType].total + 1
   let theirAnswer = document.querySelector("textarea").value
   let theirPrettyAnswer = prettify(theirAnswer)
   let correct = false
@@ -105,7 +120,7 @@ function evaluateAnswer(questionObj){
 
 function theyGotItRight(questionObj, theirPrettyAnswer, prettyAnswer, index){
   score = score + 1
-  total = total + 1
+  stats[questionObj.answerType].score = stats[questionObj.answerType].score + 1
   document.querySelector("#score").innerText = `${score}/${total}`
   let explanation = document.querySelector("#answer-explanation")
   if(index === 0){
@@ -131,7 +146,6 @@ function theyGotItRight(questionObj, theirPrettyAnswer, prettyAnswer, index){
 }
 
 function theyGotItWrong(questionObj, theirPrettyAnswer){
-  total = total + 1
   document.querySelector("#score").innerText = `${score}/${total}`
   let explanation = document.querySelector("#answer-explanation")
   explanation.innerHTML = `
@@ -153,7 +167,12 @@ function askNextQuesion(){
     let explanation = document.querySelector("#answer-explanation")
     explanation.innerHTML = ""
   }else{
-    alert("All done. You can refresh the page to get the same questions again.")
+    alert(`All done. You can refresh the page to get the same questions again.
+
+      ${FUNC_DECLARATION} Score: ${stats[FUNC_DECLARATION].score}/${stats[FUNC_DECLARATION].total}
+      ${FUNC_EXPRESSION} Score: ${stats[FUNC_EXPRESSION].score}/${stats[FUNC_EXPRESSION].total}
+      ${ARROW_FUNC} Score: ${stats[ARROW_FUNC].score}/${stats[ARROW_FUNC].total}
+      `)
     document.getElementById("next-button").disabled = false
   }
 }
