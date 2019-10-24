@@ -76,7 +76,7 @@ All of the above are valid ways to write arrow functions. If this is a hard one,
         }`
     ],
     answerType: FUNC_DECLARATION,
-    note: `In both cases: The function's name is changeSign. The argument is variable called x. The function returns the negative value of x.`
+    note: `In both cases: The function's name is changeSign. The argument is a variable called x. The function returns the negative value of x.`
   },
   {
     id: 5,

@@ -52,7 +52,7 @@ function renderButtons(questionObj){
 
   let seeAnswer = document.createElement("button")
   seeAnswer.id = "see-answer-button"
-  seeAnswer.innerText = "See Answer"
+  seeAnswer.innerText = "See Answer(s)"
 
   buttonContainer.append(answerButton, nextButton, seeAnswer)
   answerButton.addEventListener('click', ()=>answerQuestion(questionObj))
@@ -65,7 +65,7 @@ function seeAnswers(questionObj){
   let text = `The following are acceptable answers:`
   questionObj.answers.forEach(answer => {
     text += `
-    
+
 ${prettify(answer)}`
   })
   alert(text)
