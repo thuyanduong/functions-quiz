@@ -11,6 +11,7 @@
 }
 
 #before-text{
+  text-align: right;
   display:inline-block;
   font-family: "Courier New", Courier, monospace!important;
   float: left;

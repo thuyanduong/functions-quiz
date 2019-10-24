@@ -17,8 +17,8 @@ function renderTextArea(questionObj){
 function renderBeforeText(questionObj){
   let beforeText = document.querySelector("#before-text")
   if(questionObj.beforeText){
-    beforeText.innerText = questionObj.beforeText
-    let width = questionObj.beforeText.length * 15
+    beforeText.innerHTML = `${questionObj.beforeText} &nbsp; `
+    let width = questionObj.beforeText.length * 13
     beforeText.style.width = `${width}px`
   }else{
     beforeText.innerText = ''
