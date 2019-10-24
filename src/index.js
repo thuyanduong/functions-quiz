@@ -5,11 +5,16 @@ document.addEventListener('DOMContentLoaded', function(){
 function showQuestion(questionObj){
   renderQuestionHeader(questionObj)
   renderFunction(questionObj)
-  beforeText(questionObj)
+  renderBeforeText(questionObj)
+  renderTextArea(questionObj)
   renderButtons(questionObj)
 }
 
-function beforeText(questionObj){
+function renderTextArea(questionObj){
+  document.querySelector("#answer-input").value = questionObj.placeholder
+}
+
+function renderBeforeText(questionObj){
   let beforeText = document.querySelector("#before-text")
   if(questionObj.beforeText){
     beforeText.innerText = questionObj.beforeText
@@ -57,10 +62,10 @@ function answerQuestion(questionObj){
 }
 
 function evaluateAnswer(questionObj){
+  document.querySelector("#answer-explanation").classList.remove("hide")
   total = total + 1
   stats[questionObj.answerType].total = stats[questionObj.answerType].total + 1
-  let theirAnswer = document.querySelector("textarea").value
-  let theirPrettyAnswer = prettify(theirAnswer)
+  let theirPrettyAnswer = prettify(document.querySelector("#answer-input").value)
   let correct = false
   questionObj.answers.forEach((answer, index) => {
     let prettyAnswer = prettify(answer)
@@ -72,58 +77,96 @@ function evaluateAnswer(questionObj){
   if(!correct){
     theyGotItWrong(questionObj, theirPrettyAnswer)
   }
+  document.querySelector("#score").innerText = `${score}/${total}`
 }
 
 function theyGotItRight(questionObj, theirPrettyAnswer, prettyAnswer, index){
   score = score + 1
   stats[questionObj.answerType].score = stats[questionObj.answerType].score + 1
-  document.querySelector("#score").innerText = `${score}/${total}`
-  let explanation = document.querySelector("#answer-explanation")
+  document.querySelector("#results").innerText = "You got it right!"
   if(index === 0){
-    explanation.innerHTML = `
-      <h5>You got it right</h5>
-      <p>You wrote:</p>
-      <textarea id="their-answer" class="explanation true-answer"></textarea>
-    `
-    explanation.querySelector("#their-answer").value = theirPrettyAnswer
+    let box1 = document.querySelector("#box1")
+    box1.querySelector("p").innerText = "You wrote:"
+    box1.querySelector("textarea").value = theirPrettyAnswer
+    box1.querySelector("textarea").classList.add("right")
+    box1.classList.remove("hide")
+
+    if(questionObj.note){
+      let box2 = document.querySelector("#box2")
+      box2.querySelector("p").innerText = "Note:"
+      box2.querySelector("textarea").value = questionObj.note
+      box2.querySelector("textarea").classList.add("note")
+      box2.classList.remove("hide")
+    }
   }else{
-    explanation.innerHTML = `
-      <h5>You got it right</h5>
-      <p>You wrote:</p>
-      <textarea id="their-answer" class="explanation true-answer"></textarea>
-      <p>But an even better way to write it is:</p>
-      <textarea id="true-answer" class="explanation true-answer "></textarea>
-    `
-    explanation.querySelector("#their-answer").value = theirPrettyAnswer
-    explanation.querySelector("#their-answer").classList.remove("true-answer")
-    explanation.querySelector("#their-answer").classList.add("good-enough")
-    explanation.querySelector("#true-answer").value = prettify(questionObj.answers[0])
+    let box1 = document.querySelector("#box1")
+    box1.querySelector("p").innerText = "You wrote:"
+    box1.querySelector("textarea").value = theirPrettyAnswer
+    box1.querySelector("textarea").classList.add("good-enough")
+    box1.classList.remove("hide")
+
+    let box2 = document.querySelector("#box2")
+    box2.querySelector("p").innerText = "But an even better answer is:"
+    box2.querySelector("textarea").value = prettify(questionObj.answers[0])
+    box2.querySelector("textarea").classList.add("right")
+    box2.classList.remove("hide")
+
+    if(questionObj.note){
+      let box3 = document.querySelector("#box3")
+      box3.querySelector("p").innerText = "Note:"
+      box3.querySelector("textarea").value = questionObj.note
+      box3.querySelector("textarea").classList.add("note")
+      box3.classList.remove("hide")
+    }
   }
 }
 
 function theyGotItWrong(questionObj, theirPrettyAnswer){
-  document.querySelector("#score").innerText = `${score}/${total}`
-  let explanation = document.querySelector("#answer-explanation")
-  explanation.innerHTML = `
-    <h5>You got it wrong</h5>
-    <p>You wrote:</p>
-    <textarea id="their-answer" class="explanation wrong"></textarea>
-    <p>The correct answer is:</p>
-    <textarea id="true-answer" class="explanation true-answer"></textarea>
-  `
-  explanation.querySelector("#their-answer").value = theirPrettyAnswer
-  explanation.querySelector("#true-answer").value = prettify(questionObj.answers[0])
+  document.querySelector("#results").innerText = "You got it wrong."
+
+  let box1 = document.querySelector("#box1")
+  box1.querySelector("p").innerText = "You wrote:"
+  box1.querySelector("textarea").value = theirPrettyAnswer
+  box1.querySelector("textarea").classList.add("wrong")
+  box1.classList.remove("hide")
+
+  let box2 = document.querySelector("#box2")
+  box2.querySelector("p").innerText = "The correct answer is:"
+  box2.querySelector("textarea").value = prettify(questionObj.answers[0])
+  box2.querySelector("textarea").classList.add("right")
+  box2.classList.remove("hide")
+
+  if(questionObj.note){
+    let box3 = document.querySelector("#box3")
+    box3.querySelector("p").innerText = "Note:"
+    box3.querySelector("textarea").value = questionObj.note
+    box3.querySelector("textarea").classList.add("note")
+    box3.classList.remove("hide")
+  }
 }
 
 function askNextQuesion(){
   currentIndex += 1
   if(currentIndex < shuffledQuestions.length){
+    document.querySelector("#answer-explanation").classList.add("hide")
+    document.querySelector("#box1").classList.add("hide")
+    document.querySelector("#box1").querySelector("textarea").classList.remove("right")
+    document.querySelector("#box1").querySelector("textarea").classList.remove("wrong")
+    document.querySelector("#box1").querySelector("textarea").classList.remove("good-enough")
+    document.querySelector("#box1").querySelector("textarea").classList.remove("note")
+    document.querySelector("#box2").classList.add("hide")
+    document.querySelector("#box2").querySelector("textarea").classList.remove("right")
+    document.querySelector("#box2").querySelector("textarea").classList.remove("wrong")
+    document.querySelector("#box2").querySelector("textarea").classList.remove("good-enough")
+    document.querySelector("#box2").querySelector("textarea").classList.remove("note")
+    document.querySelector("#box3").classList.add("hide")
+    document.querySelector("#box3").querySelector("textarea").classList.remove("right")
+    document.querySelector("#box3").querySelector("textarea").classList.remove("wrong")
+    document.querySelector("#box3").querySelector("textarea").classList.remove("good-enough")
+    document.querySelector("#box3").querySelector("textarea").classList.remove("note")
     showQuestion(shuffledQuestions[currentIndex])
-    document.querySelector("textarea").value = ""
-    let explanation = document.querySelector("#answer-explanation")
-    explanation.innerHTML = ""
   }else{
-    alert(`All done. You can refresh the page to get the same questions again.
+    alert(`All done. You can refresh the page to get the same questions in a random order again.
 
       ${FUNC_DECLARATION} Score: ${stats[FUNC_DECLARATION].score}/${stats[FUNC_DECLARATION].total}
       ${FUNC_EXPRESSION} Score: ${stats[FUNC_EXPRESSION].score}/${stats[FUNC_EXPRESSION].total}
