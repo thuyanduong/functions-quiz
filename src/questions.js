@@ -124,7 +124,7 @@ All of the above are valid ways to write arrow functions. If this is a hard one,
     answers: [
       'a => Math.floor(a)',
       '(a) => Math.floor(a)',
-      'a => {return Math.floor(a)',
+      'a => {return Math.floor(a)}',
       '(a) => {return Math.floor(a)}'
     ],
     answerType: ARROW_FUNC,
