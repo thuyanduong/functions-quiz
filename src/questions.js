@@ -151,7 +151,7 @@ All of the above are valid ways to write arrow functions. The main thing to reme
       '(firstName, lastName) => {return firstName + " " + lastName}'
     ],
     answerType: ARROW_FUNC,
-    note: `The parenthesis around the argument list are only optional if you have a single argument. If you have more than one argument then the parathesis are mandatory.`
+    note: `The parenthesis around the argument list are only optional if you have a single argument. If you have more than one argument then the parenthesis are mandatory.`
     },
   {
     id: 9,
@@ -196,7 +196,7 @@ All of the above are valid ways to write arrow functions. The main thing to reme
         console.log(event.target.value)
       }
     `,
-    beforeText: `const handleButtonClick =`,
+    beforeText: `const handleSubmitForm =`,
     placeholder: ``,
     answers: [
       'event => console.log(event.target.value)',
@@ -224,6 +224,11 @@ The two arrow function above are actually identical in use. This is because they
     placeholder: ``,
     answers: [`
       z => {
+        console.log(z*z)
+        return z*z
+      }
+    `,`
+      (z) => {
         console.log(z*z)
         return z*z
       }
