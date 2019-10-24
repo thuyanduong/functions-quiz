@@ -49,10 +49,26 @@ function renderButtons(questionObj){
   nextButton.id = "next-button"
   nextButton.disabled = true
   nextButton.innerText = "Next Question"
-  buttonContainer.append(answerButton, nextButton)
 
+  let seeAnswer = document.createElement("button")
+  seeAnswer.id = "see-answer-button"
+  seeAnswer.innerText = "See Answer"
+
+  buttonContainer.append(answerButton, nextButton, seeAnswer)
   answerButton.addEventListener('click', ()=>answerQuestion(questionObj))
   nextButton.addEventListener('click', askNextQuesion)
+  seeAnswer.addEventListener('click', () =>seeAnswers(questionObj))
+}
+
+function seeAnswers(questionObj){
+  console.log('hi')
+  let text = `The following are acceptable answers:`
+  questionObj.answers.forEach(answer => {
+    text += `
+    
+${prettify(answer)}`
+  })
+  alert(text)
 }
 
 function answerQuestion(questionObj){
