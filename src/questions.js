@@ -88,6 +88,9 @@ All of the above are valid ways to write arrow functions. If this is a hard one,
     answers: [
       `function add(y, z){
             return y + z
+        }`,
+      `function add(y, z){
+            return z + y
         }`
     ],
     answerType: FUNC_DECLARATION,
@@ -149,7 +152,13 @@ All of the above are valid ways to write arrow functions. The main thing to reme
     answers: [
       '(firstName, lastName) => firstName + " " + lastName',
       '(firstName, lastName) => (firstName + " " + lastName)',
-      '(firstName, lastName) => {return firstName + " " + lastName}'
+      '(firstName, lastName) => {return firstName + " " + lastName}',
+      '(firstName, lastName) => `${firstName} ${lastName}`',
+      '(firstName, lastName) => (`${firstName} ${lastName}`)',
+      '(firstName, lastName) => {return `${firstName} ${lastName}`}',
+      "(firstName, lastName) => firstName + ' ' + lastName",
+      "(firstName, lastName) => (firstName + ' ' + lastName)",
+      "(firstName, lastName) => {return firstName + ' ' + lastName}"
     ],
     answerType: ARROW_FUNC,
     note: `The parenthesis around the argument list are only optional if you have a single argument. If you have more than one argument then the parenthesis are mandatory.`
