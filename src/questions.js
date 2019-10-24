@@ -76,7 +76,7 @@ All of the above are valid ways to write arrow functions. If this is a hard one,
         }`
     ],
     answerType: FUNC_DECLARATION,
-    note: `In both cases: The function's name is changeSign. The argument is a variable called x. The function returns the negative value of x.`
+    note: `In both cases: The function's name is changeSign. The argument is a variable called x. The function returns the negative value of x. If this was difficult, try first translating the arrow function to a function expression, then a function declaration.`
   },
   {
     id: 5,
@@ -91,7 +91,7 @@ All of the above are valid ways to write arrow functions. If this is a hard one,
         }`
     ],
     answerType: FUNC_DECLARATION,
-    note: `In both cases: The function's name is add. The arguments list is variables y and z. The function returns the sum of its variable arguments.`
+    note: `In both cases: The function's name is add. The arguments list is variables y and z. The function returns the sum of its variable arguments. If this was difficult, try first translating the arrow function to a function expression, then a function declaration.`
   },
   {
     id: 6,
@@ -148,6 +148,7 @@ All of the above are valid ways to write arrow functions. The main thing to reme
     placeholder: ``,
     answers: [
       '(firstName, lastName) => firstName + " " + lastName',
+      '(firstName, lastName) => (firstName + " " + lastName)',
       '(firstName, lastName) => {return firstName + " " + lastName}'
     ],
     answerType: ARROW_FUNC,
