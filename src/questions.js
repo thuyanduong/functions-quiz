@@ -12,7 +12,7 @@ let questions = [
         return num * 2
       }
     `,
-    beforeText: `const multipleByTwo =`,
+    beforeText: `let multipleByTwo =`,
     placeholder: ``,
     answers: [`
       function (num){
@@ -30,7 +30,7 @@ let questions = [
         return x + 7
       }
     `,
-    beforeText: `const addSeven =`,
+    beforeText: `let addSeven =`,
     placeholder: ``,
     answers: [
       'x => x + 7',
@@ -51,7 +51,7 @@ All of the above are valid ways to write arrow functions. If this is a hard one,
     id: 3,
     question: `Rewrite the following function expression as a function declaration.`,
     func: `
-      const greet = function(name){
+      let greet = function(name){
         alert("Hello, " + name)
       }
     `,
@@ -67,7 +67,7 @@ All of the above are valid ways to write arrow functions. If this is a hard one,
     id: 4,
     question: `Rewrite the following arrow function as a function declaration.`,
     func: `
-      const changeSign = x => -x
+      let changeSign = x => -x
     `,
     placeholder: ``,
     answers: [
@@ -82,7 +82,7 @@ All of the above are valid ways to write arrow functions. If this is a hard one,
     id: 5,
     question: `Rewrite the following arrow function as a function declaration.`,
     func: `
-      const add = (y, z) => {return y + z}
+      let add = (y, z) => {return y + z}
     `,
     placeholder: ``,
     answers: [
@@ -104,7 +104,7 @@ All of the above are valid ways to write arrow functions. If this is a hard one,
         console.log("Hi")
       }
     `,
-    beforeText: `const sayHi =`,
+    beforeText: `let sayHi =`,
     placeholder: ``,
     answers: [`
       function (){
@@ -118,11 +118,11 @@ All of the above are valid ways to write arrow functions. If this is a hard one,
     id: 7,
     question: `Rewrite the following function expression as an arrow function.`,
     func: `
-      const roundDown = function(a){
+      let roundDown = function(a){
         return Math.floor(a)
       }
     `,
-    beforeText: `const roundDown =`,
+    beforeText: `let roundDown =`,
     placeholder: ``,
     answers: [
       'a => Math.floor(a)',
@@ -147,7 +147,7 @@ All of the above are valid ways to write arrow functions. The main thing to reme
         return firstName + " " + lastName
       }
     `,
-    beforeText: `const nameTagMaker = `,
+    beforeText: `let nameTagMaker = `,
     placeholder: ``,
     answers: [
       '(firstName, lastName) => firstName + " " + lastName',
@@ -167,11 +167,11 @@ All of the above are valid ways to write arrow functions. The main thing to reme
     id: 9,
     question: `Rewrite the following function expression as an arrow function.`,
     func: `
-      const helloWorld = function(){
+      let helloWorld = function(){
         return "hello world"
       }
     `,
-    beforeText: `const helloWorld = `,
+    beforeText: `let helloWorld = `,
     placeholder: ``,
     answers: [
       '() => "hello world"',
@@ -188,7 +188,7 @@ All of the above are valid ways to write arrow functions. The main thing to reme
         console.log(event.target.innerText)
       }
     `,
-    beforeText: `const handleButtonClick =`,
+    beforeText: `let handleButtonClick =`,
     placeholder: ``,
     answers: [`
       function(event){
@@ -206,7 +206,7 @@ All of the above are valid ways to write arrow functions. The main thing to reme
         console.log(event.target.value)
       }
     `,
-    beforeText: `const handleSubmitForm =`,
+    beforeText: `let handleSubmitForm =`,
     placeholder: ``,
     answers: [
       'event => console.log(event.target.value)',
@@ -226,21 +226,24 @@ The two arrow function above are actually identical in use. This is because they
     question: `Rewrite the following function declaration as an arrow function`,
     func: `
       function squareAndPrint(z){
-        console.log(z*z)
-        return z*z
+        let sq = z*z
+        console.log(sq)
+        return sq
       }
     `,
-    beforeText: `const squareAndPrint =`,
+    beforeText: `let squareAndPrint =`,
     placeholder: ``,
     answers: [`
       z => {
-        console.log(z*z)
-        return z*z
+        let sq = z*z
+        console.log(sq)
+        return sq
       }
     `,`
       (z) => {
-        console.log(z*z)
-        return z*z
+        let sq = z*z
+        console.log(sq)
+        return sq
       }
     `],
     answerType: ARROW_FUNC,
