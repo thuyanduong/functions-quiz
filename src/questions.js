@@ -45,7 +45,7 @@ let questions = [
 x => {return x + 7}
 (x) => {return x + 7}
 
-All of the above are valid ways to write arrow functions. If this is a hard one, first try converting a function declartion to a function expression, then convert that to an arrow function.`
+All of the above are valid ways to write arrow functions. If this is a hard one, first try converting a function declaration to a function expression, then convert that to an arrow function.`
   },
   {
     id: 3,
@@ -161,7 +161,7 @@ All of the above are valid ways to write arrow functions. The main thing to reme
       "(firstName, lastName) => {return firstName + ' ' + lastName}"
     ],
     answerType: ARROW_FUNC,
-    note: `The parenthesis around the argument list are only optional if you have a single argument. If you have more than one argument then the parenthesis are mandatory.`
+    note: `The parentheses around the argument list are only optional if you have a single argument. If you have more than one argument then the parentheses are mandatory.`
     },
   {
     id: 9,
@@ -178,7 +178,7 @@ All of the above are valid ways to write arrow functions. The main thing to reme
       '() => {return "hello world"}'
     ],
     answerType: ARROW_FUNC,
-    note: `The parenthesis around the argument list are only optional if you have a single argument. If you have zero arguments then the parenthesis are mandatory.`
+    note: `The parentheses around the argument list are only optional if you have a single argument. If you have zero arguments then the parentheses are mandatory.`
   },
   {
     id: 10,
@@ -219,7 +219,7 @@ All of the above are valid ways to write arrow functions. The main thing to reme
 `event => console.log(event.target.value)
 event => {console.log(event.target.value)}
 
-The two arrow function above are actually identical in use. This is because they both return undefined. A console.log() prints to the console but also returns undefined. So the first function is implicitly returning undefined because that is what invoking console.log() evaluates to. The second function does not return anything, which means it returns undefined.`
+The two arrow functions above are actually identical in use. This is because they both return undefined. A console.log() prints to the console but also returns undefined. So the first function is implicitly returning undefined because that is what invoking console.log() evaluates to. The second function does not return anything, which means it returns undefined.`
   },
   {
     id: 12,
